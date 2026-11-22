@@ -1,0 +1,150 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Home - Job Portal{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="home-hero text-center">
+
+    <div class="hero-content">
+
+        <span class="hero-badge">
+            ✦ YOUR CAREER JOURNEY STARTS HERE
+        </span>
+
+        <h1 class="hero-title mt-4">
+            Find Your Next
+            <span class="gradient-text">Big Opportunity</span>
+        </h1>
+
+        <p class="hero-description mt-3">
+            Explore exciting career opportunities, connect with
+            companies and take the next step towards your dream career.
+        </p>
+
+        <div class="hero-buttons mt-4">
+
+            <a href="{% url 'register' %}"
+               class="btn btn-primary btn-lg px-4">
+                Get Started →
+            </a>
+
+            <a href="{% url 'login' %}"
+               class="btn btn-outline-light btn-lg px-4">
+                Login
+            </a>
+
+        </div>
+
+        <div class="hero-note mt-4">
+            ✨ Opportunities are waiting for you
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES SECTION -->
+<section class="features-section mt-5">
+
+    <div class="text-center mb-5">
+
+        <span class="section-label">WHAT WE OFFER</span>
+
+        <h2 class="section-title mt-2">
+            Everything You Need to Grow
+        </h2>
+
+        <p class="section-description">
+            A smarter way to connect talent with opportunity.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="feature-card h-100">
+
+                <div class="feature-icon">
+                    <i class="bi bi-search"></i>
+                </div>
+
+                <h4>Explore Opportunities</h4>
+
+                <p>
+                    Discover job openings that match your skills,
+                    interests and career goals.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="feature-card h-100">
+
+                <div class="feature-icon">
+                    <i class="bi bi-building"></i>
+                </div>
+
+                <h4>Connect with Companies</h4>
+
+                <p>
+                    Companies can publish vacancies and discover
+                    talented candidates.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="feature-card h-100">
+
+                <div class="feature-icon">
+                    <i class="bi bi-graph-up-arrow"></i>
+                </div>
+
+                <h4>Track Applications</h4>
+
+                <p>
+                    Follow your application progress and stay
+                    updated on your job journey.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COMPANY CTA -->
+<section class="company-cta text-center mt-5">
+
+    <h2>Are You Hiring?</h2>
+
+    <p>
+        Find the right talent and build your dream team with us.
+    </p>
+
+    <a href="{% url 'company_register' %}"
+       class="btn btn-outline-light btn-lg mt-2">
+        Register as Company →
+    </a>
+
+</section>
+
+{% endblock %}

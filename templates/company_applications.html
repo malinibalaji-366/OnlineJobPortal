@@ -1,0 +1,62 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+
+    <h2 class="text-center mb-4">Job Applicants</h2>
+
+    <a href="{% url 'company_dashboard' %}"
+       class="btn btn-outline-secondary mb-4">
+        Back to Dashboard
+    </a>
+
+    {% for application in applications %}
+
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h5>{{ application.candidate.user.first_name }}
+                {{ application.candidate.user.last_name }}</h5>
+
+            <p class="mb-1">
+                <strong>Job:</strong> {{ application.job.title }}
+            </p>
+
+            <p class="mb-1">
+                <strong>Email:</strong>
+                {{ application.candidate.user.email }}
+            </p>
+
+            <p class="mb-1">
+                <strong>Applied:</strong>
+                {{ application.applied_at|date:"d M Y" }}
+            </p>
+
+            <p class="mb-3">
+                <strong>Status:</strong>
+                <span class="badge bg-primary">
+                    {{ application.get_status_display }}
+                </span>
+            </p>
+
+            <a href="{% url 'applicant_details' application.id %}"
+               class="btn btn-primary btn-sm">
+                View Applicant
+            </a>
+
+        </div>
+    </div>
+
+    {% empty %}
+
+    <div class="alert alert-info text-center">
+        No applicants have applied for your jobs yet.
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Company Registration{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+
+            <div class="card shadow p-4">
+                <h2 class="text-center mb-4">Company Registration</h2>
+
+                {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
+                {% endif %}
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <input type="text" name="username"
+                        class="form-control mb-3"
+                        placeholder="Username" required>
+
+                    <input type="email" name="email"
+                        class="form-control mb-3"
+                        placeholder="Email" required>
+
+                    <input type="password" name="password"
+                        class="form-control mb-3"
+                        placeholder="Password" required>
+
+                    <input type="text" name="company_name"
+                        class="form-control mb-3"
+                        placeholder="Company Name" required>
+
+                    <textarea name="description"
+                        class="form-control mb-3"
+                        placeholder="Company Description"
+                        rows="3" required></textarea>
+
+                    <input type="url" name="website"
+                        class="form-control mb-3"
+                        placeholder="Company Website (Optional)">
+
+                    <input type="text" name="phone"
+                        class="form-control mb-3"
+                        placeholder="Phone Number" required>
+
+                    <input type="text" name="location"
+                        class="form-control mb-3"
+                        placeholder="Company Location" required>
+
+                    <button type="submit"
+                        class="btn btn-primary w-100">
+                        Register Company
+                    </button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

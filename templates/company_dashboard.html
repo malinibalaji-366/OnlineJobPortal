@@ -1,0 +1,56 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Company Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+        <h1>Company Dashboard</h1>
+        <p class="text-muted">
+            Welcome to your company workspace!
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card shadow p-4 text-center">
+                <h4>Post a Job</h4>
+                <p>Create and publish new job vacancies.</p>
+                <a href="{% url 'post_job' %}"
+                    class="btn btn-primary">
+                    Post a Job
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow p-4 text-center">
+                <h4>Manage Jobs</h4>
+                <p>View and manage your job postings.</p>
+                <a href="{% url 'manage_jobs' %}"
+                    class="btn btn-primary">
+                    Manage Jobs
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow p-4 text-center">
+                <h4>Applications</h4>
+                <p>View candidates who applied for your jobs.</p>
+                <a href="{% url 'company_applications' %}"
+                    class="btn btn-primary">
+                    View Applicants
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

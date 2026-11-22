@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4 mx-auto" style="max-width: 650px;">
+
+        <h2 class="text-center mb-4">My Profile</h2>
+
+        <div class="mb-3">
+            <strong>Username:</strong>
+            <p>{{ profile.user.username }}</p>
+        </div>
+
+        <div class="mb-3">
+            <strong>Email:</strong>
+            <p>{{ profile.user.email }}</p>
+        </div>
+
+        <div class="mb-3">
+            <strong>Phone:</strong>
+            <p>{{ profile.phone }}</p>
+        </div>
+
+        <div class="mb-3">
+            <strong>Education:</strong>
+            <p>{{ profile.education }}</p>
+        </div>
+
+        <div class="mb-3">
+            <strong>Skills:</strong>
+            <p>{{ profile.skills }}</p>
+        </div>
+
+        <div class="mb-3">
+            <strong>Location:</strong>
+            <p>{{ profile.location }}</p>
+        </div>
+        <a href="{% url 'edit_candidate_profile' %}"
+            class="btn btn-primary w-100 mb-2">
+            Edit My Profile
+        </a>
+
+        <a href="{% url 'candidate_dashboard' %}"
+           class="btn btn-secondary">
+            Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+
+    <div class="card shadow p-4 mx-auto" style="max-width: 750px;">
+
+        <h2 class="text-center mb-4">Applicant Details</h2>
+
+        {% if status_updated %}
+            <div class="alert alert-success">
+                Application status updated successfully!
+            </div>
+        {% endif %}
+
+        <h5>Personal Information</h5>
+        <hr>
+
+        <p>
+            <strong>Name:</strong>
+            {{ application.candidate.user.first_name }}
+            {{ application.candidate.user.last_name }}
+        </p>
+
+        <p>
+            <strong>Username:</strong>
+            {{ application.candidate.user.username }}
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            {{ application.candidate.user.email }}
+        </p>
+
+        <p>
+            <strong>Phone:</strong>
+            {{ application.candidate.phone }}
+        </p>
+
+        <p>
+            <strong>Education:</strong>
+            {{ application.candidate.education }}
+        </p>
+
+        <p>
+            <strong>Skills:</strong>
+            {{ application.candidate.skills }}
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            {{ application.candidate.location }}
+        </p>
+
+        <h5 class="mt-4">Application Information</h5>
+        <hr>
+
+        <p>
+            <strong>Applied Job:</strong>
+            {{ application.job.title }}
+        </p>
+
+        <p>
+            <strong>Applied Date:</strong>
+            {{ application.applied_at|date:"d M Y" }}
+        </p>
+
+        <p>
+            <strong>Current Status:</strong>
+            {{ application.get_status_display }}
+        </p>
+
+        <h5 class="mt-4">Update Application Status</h5>
+        <hr>
+
+        <form method="POST"
+              action="{% url 'update_application_status' application.id %}">
+            {% csrf_token %}
+
+            <label class="form-label">Select New Status</label>
+
+            <select name="status" class="form-select mb-3" required>
+
+                {% for value, label in application.STATUS_CHOICES %}
+                    <option value="{{ value }}"
+                        {% if application.status == value %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                {% endfor %}
+
+            </select>
+
+            <button type="submit" class="btn btn-success w-100">
+                Update Status
+            </button>
+
+        </form>
+
+        <a href="{% url 'company_applications' %}"
+           class="btn btn-outline-secondary w-100 mt-2">
+            Back to Applicants
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

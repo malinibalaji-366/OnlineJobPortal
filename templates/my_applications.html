@@ -1,0 +1,84 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+
+    <h2 class="text-center mb-4">My Applications</h2>
+
+    <div class="mb-3">
+        <a href="{% url 'candidate_dashboard' %}"
+           class="btn btn-outline-secondary">
+            Back to Dashboard
+        </a>
+    </div>
+
+    {% for application in applications %}
+
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <h5>{{ application.job.title }}</h5>
+
+            <p class="mb-1">
+                <strong>Company:</strong>
+                {{ application.job.company.company_name }}
+            </p>
+
+            <p class="mb-1">
+                <strong>Location:</strong>
+                {{ application.job.location }}
+            </p>
+
+            <p class="mb-1">
+                <strong>Applied Date:</strong>
+                {{ application.applied_at|date:"d M Y" }}
+            </p>
+
+            <p class="mb-3">
+                <strong>Status:</strong>
+
+                {% if application.status == 'Selected' %}
+                    <span class="badge bg-success">
+                        {{ application.get_status_display }}
+                    </span>
+                {% elif application.status == 'Rejected' %}
+                    <span class="badge bg-danger">
+                        {{ application.get_status_display }}
+                    </span>
+                {% elif application.status == 'Shortlisted' %}
+                    <span class="badge bg-primary">
+                        {{ application.get_status_display }}
+                    </span>
+                {% else %}
+                    <span class="badge bg-warning text-dark">
+                        {{ application.get_status_display }}
+                    </span>
+                {% endif %}
+            </p>
+
+            <a href="{% url 'job_details' application.job.id %}"
+               class="btn btn-outline-primary btn-sm">
+                View Job
+            </a>
+
+        </div>
+    </div>
+
+    {% empty %}
+
+    <div class="alert alert-info text-center">
+        You haven't applied for any jobs yet.
+        <br><br>
+        <a href="{% url 'browse_jobs' %}"
+           class="btn btn-primary">
+            Browse Jobs
+        </a>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

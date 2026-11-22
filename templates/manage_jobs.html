@@ -1,0 +1,91 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+
+    <h2 class="text-center mb-4">Manage Your Jobs</h2>
+
+    <div class="mb-4">
+        <a href="{% url 'post_job' %}" class="btn btn-primary">
+            + Post New Job
+        </a>
+        <a href="{% url 'company_dashboard' %}"
+           class="btn btn-outline-secondary">
+            Back to Dashboard
+        </a>
+    </div>
+
+    {% for job in jobs %}
+
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between flex-wrap">
+
+                <div>
+                    <h5>{{ job.title }}</h5>
+                    <p class="mb-1">{{ job.location }}</p>
+                    <p class="mb-1">{{ job.salary }}</p>
+                    <p class="mb-2">{{ job.job_type }}</p>
+                </div>
+
+                <div>
+                    {% if job.is_active %}
+                        <span class="badge bg-success">Active</span>
+                    {% else %}
+                        <span class="badge bg-secondary">Inactive</span>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <hr>
+
+            <a href="{% url 'edit_job' job.id %}"
+               class="btn btn-warning btn-sm">
+                Edit
+            </a>
+
+            <form method="POST"
+                  action="{% url 'toggle_job_status' job.id %}"
+                  class="d-inline">
+                {% csrf_token %}
+
+                <button type="submit"
+                        class="btn btn-info btn-sm">
+                    {% if job.is_active %}
+                        Deactivate
+                    {% else %}
+                        Activate
+                    {% endif %}
+                </button>
+            </form>
+
+            <form method="POST"
+                  action="{% url 'delete_job' job.id %}"
+                  class="d-inline"
+                  onsubmit="return confirm('Are you sure you want to delete this job?');">
+                {% csrf_token %}
+
+                <button type="submit"
+                        class="btn btn-danger btn-sm">
+                    Delete
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    {% empty %}
+
+        <div class="alert alert-info text-center">
+            You have not posted any jobs yet.
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
