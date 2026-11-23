@@ -19,7 +19,11 @@ venv/
 # IDE files
 .idea/
 V
+
 # Temporary files
 *.tmp
 ~$*
 temp_project/
+
+# Deployment generated files
+staticfiles/
