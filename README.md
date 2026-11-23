@@ -1,35 +1,35 @@
 # Online Job Portal
 
-A web-based recruitment platform developed using Python, Django and MySQL. The application connects job seekers with companies through a centralized platform for job searching, recruitment and application management.
+A web-based job recruitment platform built using **Python, Django and MySQL**. The application connects job seekers with companies, allowing candidates to explore job opportunities and companies to publish and manage job postings.
+
+🌐 **Live Demo:** https://onlinejobportal-production-3d5ee4ce.up.railway.app
 
 ## Features
 
-### Candidate
+### Candidate Module
 - Candidate registration and login
-- Candidate profile creation and editing
-- Browse available job listings
-- Search and filter jobs
-- View job details
+- Candidate dashboard
+- View and edit candidate profile
+- Browse available job opportunities
 - Apply for jobs
-- Track application status
-- Prevent duplicate applications
+- Track job applications
 
-### Company
+### Company Module
 - Company registration and login
-- Company profile management
-- Post new job vacancies
-- Edit and delete job postings
-- Activate and deactivate job listings
+- Company dashboard
+- Post new job opportunities
+- Manage job postings
 - View candidate applications
 - Update application status
 
-### Admin
-- Manage users and roles
-- Manage candidate profiles
-- Manage company profiles
-- Manage jobs and applications through Django Admin
+### General Features
+- Role-based access for candidates and companies
+- Django authentication
+- MySQL database integration
+- Responsive web interface
+- Production deployment using Railway
 
-## Technology Stack
+## Technologies Used
 
 | Technology | Purpose |
 |---|---|
@@ -38,78 +38,11 @@ A web-based recruitment platform developed using Python, Django and MySQL. The a
 | MySQL | Database |
 | HTML5 | Page structure |
 | CSS3 | Styling |
-| Bootstrap 5 | Responsive UI |
-| JavaScript | Frontend interactions |
-| VS Code | Development environment |
-
-## Project Modules
-
-- `accounts` – User registration, login and role management
-- `candidates` – Candidate profile management
-- `companies` – Company profile management
-- `jobs` – Job postings and applications
-
-## Installation and Setup
-
-### 1. Clone the repository
-
-```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd OnlineJobPortal
-```
-
-### 2. Create a virtual environment
-
-```bash
-python -m venv venv
-```
-
-### 3. Activate the virtual environment
-
-Windows PowerShell:
-
-```powershell
-.\venv\Scripts\Activate
-```
-
-### 4. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 5. Configure MySQL
-
-Create a MySQL database and configure the database connection in Django's `settings.py`.
-
-Do not upload your database password or secret credentials to GitHub.
-
-### 6. Apply migrations
-
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
-
-### 7. Create an admin account
-
-```bash
-python manage.py createsuperuser
-```
-
-### 8. Run the development server
-
-```bash
-python manage.py runserver
-```
-
-Open the application at:
-
-`http://127.0.0.1:8000/`
-
-Django Admin:
-
-`http://127.0.0.1:8000/admin/`
+| JavaScript | Client-side functionality |
+| Git & GitHub | Version control |
+| Gunicorn | Production application server |
+| WhiteNoise | Static file serving |
+| Railway | Cloud deployment |
 
 ## Project Structure
 
@@ -120,28 +53,118 @@ OnlineJobPortal/
 ├── candidates/
 ├── companies/
 ├── jobs/
+├── jobportal/
 ├── templates/
 ├── static/
+├── media/
 ├── manage.py
 ├── requirements.txt
-└── README.md
+├── Procfile
+└── .gitignore
 ```
+
+## Installation and Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/malinibalaji-366/OnlineJobPortal.git
+cd OnlineJobPortal
+```
+
+### 2. Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+Activate it on Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure environment variables
+
+Create a `.env` file in the project root:
+
+```env
+SECRET_KEY=your-secret-key
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1,localhost
+
+DB_NAME=online_job_portal
+DB_USER=root
+DB_PASSWORD=your-mysql-password
+DB_HOST=localhost
+DB_PORT=3306
+```
+
+**Note:** Never upload your `.env` file or secret credentials to GitHub.
+
+### 5. Create the MySQL database
+
+```sql
+CREATE DATABASE online_job_portal;
+```
+
+### 6. Apply migrations
+
+```bash
+python manage.py migrate
+```
+
+### 7. Run the development server
+
+```bash
+python manage.py runserver
+```
+
+Open:
+
+http://127.0.0.1:8000/
+
+## Deployment
+
+The application is deployed using Railway.
+
+- Source code hosted on GitHub
+- MySQL database hosted on Railway
+- Gunicorn used as the application server
+- WhiteNoise configured for static files
+- Production environment variables configured securely
+
+## Testing
+
+The deployed application has been tested for:
+
+- Candidate registration and login
+- Company registration and login
+- Dashboard access
+- Job posting and browsing
+- Job application workflow
+- Application management
 
 ## Future Enhancements
 
-- Resume upload functionality
+- Advanced job search and filtering
 - Email notifications
-- Job recommendation system
-- Interview scheduling
-- Advanced analytics
-- Online deployment
+- Resume upload and management
+- Improved candidate-company communication
+- Enhanced analytics dashboard
 
 ## Author
 
 **Malini Balaji**
 
-Personal Full Stack Web Development Project.
+GitHub: [malinibalaji-366](https://github.com/malinibalaji-366)
 
-## License
+---
 
-This project is developed for learning and portfolio demonstration purposes.
+⭐ If you find this project interesting, feel free to explore the repository!
